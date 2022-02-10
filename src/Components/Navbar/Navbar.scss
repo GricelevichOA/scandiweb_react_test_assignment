@@ -1,0 +1,48 @@
+@import "../../index.scss";
+
+.nav {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav__links {
+}
+
+.nav__link {
+  text-decoration: none;
+  color: $color_text;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 20px;
+
+  text-transform: capitalize;
+  cursor: default;
+
+  &:hover {
+    font-weight: 600;
+    color: $color_green;
+    border-bottom: 2px solid $color_green;
+  }
+
+  &:active {
+    font-weight: 600;
+    color: $color_green;
+    border-bottom: 2px solid $color_green;
+  }
+}
+
+.nav__logo {
+}
+
+.nav__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav__action {
+  padding: 10px;
+}
