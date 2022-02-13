@@ -16,3 +16,55 @@ export const GET_CATEGORIES = gql`
     }
   }
 `;
+
+export const GET_PRODUCTS = gql`
+  query Query($input: CategoryInput) {
+    category(input: $input) {
+      name
+      products {
+        id
+        name
+        prices {
+          amount
+          currency {
+            symbol
+            label
+          }
+        }
+        inStock
+        gallery
+        brand
+      }
+    }
+  }
+`;
+
+export const GET_PRODUCT = gql`
+  query Query($productId: String!) {
+    product(id: $productId) {
+      brand
+      attributes {
+        id
+        items {
+          displayValue
+          id
+          value
+        }
+        name
+        type
+      }
+      description
+      gallery
+      id
+      inStock
+      name
+      prices {
+        amount
+        currency {
+          symbol
+          label
+        }
+      }
+    }
+  }
+`;

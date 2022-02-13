@@ -12,26 +12,26 @@ class App extends Component {
 
     this.state = {
       currentCurrency: "",
-      currentCategory: "clothes",
+      currentCategory: "tech",
     };
   }
-
-  componentDidMount() {}
 
   render() {
     return (
       <div className="App">
         <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProductList currentCategory={this.state.currentCategory} />
-            }
-          />
-          <Route path="/product/:id" element={<ProductDescription />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProductList currentCategory={this.state.currentCategory} />
+              }
+            />
+            <Route path="/product/:id" element={<ProductDescription />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
       </div>
     );
   }

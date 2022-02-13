@@ -1,0 +1,25 @@
+.product {
+  padding: 16px;
+
+  &:hover {
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  }
+
+  &__image img {
+    max-width: 356px;
+    max-height: 356px;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: 18px;
+    line-height: 160%;
+    font-weight: 300;
+  }
+
+  &__cost {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+  }
+}

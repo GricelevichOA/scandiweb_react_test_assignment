@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import "./Navbar.scss";
 import logo from "../../Images/logo_transparent.svg";
 import cartLogo from "../../Images/empty_cart.svg";
