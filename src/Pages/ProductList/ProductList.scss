@@ -1,13 +1,18 @@
 @import "../../index.scss";
 
-.category__header {
-  font-size: 42px;
-  font-weight: 400;
-  text-transform: capitalize;
-}
+.product-list {
+  max-width: 70%;
+  margin: 0 auto;
 
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+  &__header {
+    font-size: 42px;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }

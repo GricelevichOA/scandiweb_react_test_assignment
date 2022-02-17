@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Query } from "@apollo/client/react/components";
 import { GET_PRODUCTS } from "../../graphql/queries";
 import ProductCard from "../../Components/ProductCard/ProductCard";
@@ -7,7 +7,7 @@ import "./ProductList.scss";
 export default class ProductList extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <Query
           query={GET_PRODUCTS}
           variables={{
@@ -20,11 +20,10 @@ export default class ProductList extends Component {
             if (loading) return <h2>Loading...</h2>;
             if (error) console.log(error);
 
-            console.log(data.category);
             return (
-              <div>
-                <h1 className="category__header">{data.category.name}</h1>
-                <div className="products">
+              <div className="product-list">
+                <h1 className="product-list__header">{data.category.name}</h1>
+                <div className="product-list__products">
                   {data.category.products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
@@ -33,7 +32,7 @@ export default class ProductList extends Component {
             );
           }}
         </Query>
-      </div>
+      </Fragment>
     );
   }
 }
