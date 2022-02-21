@@ -1,36 +1,31 @@
 import React, { Component, Fragment } from "react";
 import { Query } from "@apollo/client/react/components";
 import { GET_PRODUCT } from "../../graphql/queries";
+import ProductPage from "../../Components/ProductPage/ProductPage";
+import { withNavigation, withParmans } from "../../hocs/hocs.js";
 
-export default class ProductDescription extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class ProductDescription extends Component {
   render() {
-    console.log(this.props);
     return (
       <Fragment>
         <Query
           query={GET_PRODUCT}
           variables={{
-            productId: "apple-iphone-12-pro",
+            productId: this.props.params.id,
           }}
         >
           {({ loading, error, data }) => {
             if (loading) return <h2>Loading....</h2>;
             if (error) return console.log(error);
 
-            console.log(data);
+            console.log(data.product);
 
-            return (
-              <div className="product-page">
-                {data.product.brand} {data.product.name}
-              </div>
-            );
+            return <ProductPage product={data.product} />;
           }}
         </Query>
       </Fragment>
     );
   }
 }
+
+export default withParmans(ProductDescription);
