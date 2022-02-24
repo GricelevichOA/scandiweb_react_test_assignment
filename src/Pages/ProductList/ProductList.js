@@ -3,8 +3,9 @@ import { Query } from "@apollo/client/react/components";
 import { GET_PRODUCTS } from "../../graphql/queries";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./ProductList.scss";
+import { withParmans } from "../../hocs/hocs";
 
-export default class ProductList extends Component {
+class ProductList extends Component {
   render() {
     return (
       <Fragment>
@@ -12,7 +13,7 @@ export default class ProductList extends Component {
           query={GET_PRODUCTS}
           variables={{
             input: {
-              title: this.props.currentCategory,
+              title: this.props.params.category,
             },
           }}
         >
@@ -25,7 +26,11 @@ export default class ProductList extends Component {
                 <h1 className="product-list__header">{data.category.name}</h1>
                 <div className="product-list__products">
                   {data.category.products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      currCurrency={this.props.currCurrency}
+                    />
                   ))}
                 </div>
               </div>
@@ -36,3 +41,5 @@ export default class ProductList extends Component {
     );
   }
 }
+
+export default withParmans(ProductList);

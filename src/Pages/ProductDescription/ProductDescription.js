@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Query } from "@apollo/client/react/components";
 import { GET_PRODUCT } from "../../graphql/queries";
 import ProductPage from "../../Components/ProductPage/ProductPage";
-import { withNavigation, withParmans } from "../../hocs/hocs.js";
+import { withParmans } from "../../hocs/hocs.js";
 
 class ProductDescription extends Component {
   render() {
@@ -18,9 +18,14 @@ class ProductDescription extends Component {
             if (loading) return <h2>Loading....</h2>;
             if (error) return console.log(error);
 
-            console.log(data.product);
+            // console.log(data.product);
 
-            return <ProductPage product={data.product} />;
+            return (
+              <ProductPage
+                product={data.product}
+                currCurrency={this.props.currCurrency}
+              />
+            );
           }}
         </Query>
       </Fragment>

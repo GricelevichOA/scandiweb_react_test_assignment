@@ -1,0 +1,57 @@
+@import "../../index.scss";
+
+.product-page {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  padding: 20px;
+
+  &__gallery {
+  }
+
+  &__gallery img {
+    object-fit: cover;
+    width: 400px;
+  }
+
+  &__info {
+  }
+
+  &__brand {
+    font-weight: 600;
+    font-size: 30px;
+    color: $color_text;
+  }
+
+  &__name {
+    font-weight: 400;
+    font-size: 30px;
+    color: $color_text;
+  }
+
+  &__add {
+    background-color: $color_green;
+    color: $color_white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    padding: 20px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #4ca764;
+    }
+
+    &:active {
+      background-color: #69e68a;
+    }
+  }
+
+  &__desription {
+    font-family: $font_alt;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

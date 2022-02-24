@@ -5,6 +5,10 @@ import cartLogo from "../../Images/button_cart.svg";
 
 export default class ProductCard extends Component {
   render() {
+    const price = this.props.product.prices.find(
+      (pr) => pr.currency.label === this.props.currCurrency
+    );
+
     return (
       <div
         className={`product ${this.props.product.inStock ? null : "img-stock"}`}
@@ -35,8 +39,8 @@ export default class ProductCard extends Component {
           </Link>
         </div>
         <div className="product__cost">
-          {this.props.product.prices[0].currency.symbol}
-          {this.props.product.prices[0].amount}
+          {price.currency.symbol}
+          {price.amount}
         </div>
       </div>
     );
