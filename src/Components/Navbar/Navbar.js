@@ -61,6 +61,7 @@ export default class Navbar extends Component {
             <div className="nav__action">
               <Link to={"/cart"}>
                 <img src={cartLogo} alt="Cart" />
+                {this.props.totalItemsInCart}
               </Link>
             </div>
           </div>

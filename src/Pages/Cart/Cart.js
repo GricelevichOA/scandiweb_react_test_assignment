@@ -9,7 +9,14 @@ export default class Cart extends Component {
         <h1>Cart</h1>
         <div className="cart__list">
           {cart.map((item) => {
-            return <CartItem key={item.key} item={item} />;
+            return (
+              <CartItem
+                key={item.key}
+                item={item}
+                onAddToCart={this.props.onAddToCart}
+                onRemoveFromCart={this.props.onRemoveFromCart}
+              />
+            );
           })}
         </div>
       </div>

@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
 
     this.currencyChangeHandler = this.currencyChangeHandler.bind(this);
-    this.addToCart = this.onAddToCart.bind(this);
+    this.onAddToCart = this.onAddToCart.bind(this);
+    this.onRemoveFromCart = this.onRemoveFromCart.bind(this);
 
     this.state = {
       currentCurrency: "USD",
@@ -26,15 +27,6 @@ class App extends Component {
   }
 
   onAddToCart(item) {
-    const cartItem = {
-      id: item.id,
-      brand: item.brand,
-      name: item.name,
-      image: item.gallery[0],
-      prices: [...item.prices],
-      key: Date.now(),
-    };
-
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
 
     if (itemInCart) {
@@ -44,18 +36,48 @@ class App extends Component {
         ),
       });
     } else {
+      const cartItem = {
+        id: item.id,
+        brand: item.brand,
+        name: item.name,
+        image: item.gallery[0],
+        prices: [...item.prices],
+        key: Date.now(),
+      };
+
       this.setState({
         currentCart: [...this.state.currentCart, { ...cartItem, qty: 1 }],
       });
     }
   }
 
+  onRemoveFromCart(item) {
+    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    if (itemInCart.qty === 1) {
+      this.setState({
+        currentCart: this.state.currentCart.filter((i) => i.id !== item.id),
+      });
+    } else {
+      this.setState({
+        currentCart: this.state.currentCart.map((i) =>
+          i.id === item.id ? { ...itemInCart, qty: itemInCart.qty - 1 } : i
+        ),
+      });
+    }
+  }
+
   render() {
+    const totalItemsInCart = this.state.currentCart.reduce(
+      (a, item) => a + item.qty,
+      0
+    );
+
     return (
       <div className="App">
         <Navbar
           changeCurrency={this.currencyChangeHandler}
           currCurrency={this.state.currentCurrency}
+          totalItemsInCart={totalItemsInCart}
         />
         <Routes>
           <Route path="/" element={<Navigate to="/all" />} />
@@ -68,13 +90,19 @@ class App extends Component {
             element={
               <ProductDescription
                 currCurrency={this.state.currentCurrency}
-                addToCart={this.addToCart}
+                onAddToCart={this.onAddToCart}
               />
             }
           />
           <Route
             path="/cart"
-            element={<Cart cart={this.state.currentCart} />}
+            element={
+              <Cart
+                cart={this.state.currentCart}
+                onAddToCart={this.onAddToCart}
+                onRemoveFromCart={this.onRemoveFromCart}
+              />
+            }
           />
         </Routes>
       </div>

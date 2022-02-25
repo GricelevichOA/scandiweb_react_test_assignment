@@ -27,7 +27,7 @@ export default class ProductPage extends Component {
           <button
             className="product-page__add"
             onClick={() => {
-              this.props.addToCart(product);
+              this.props.onAddToCart(product);
             }}
           >
             Add to cart

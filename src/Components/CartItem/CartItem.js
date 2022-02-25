@@ -5,7 +5,22 @@ export default class CartItem extends Component {
     const { item } = this.props;
     return (
       <div className="cart__item">
-        {item.brand} {item.name} QUANITY: {item.qty}
+        {item.brand} {item.name} QUANITY:
+        <button
+          onClick={() => {
+            this.props.onAddToCart(item);
+          }}
+        >
+          +
+        </button>
+        {item.qty}
+        <button
+          onClick={() => {
+            this.props.onRemoveFromCart(item);
+          }}
+        >
+          -
+        </button>
       </div>
     );
   }
