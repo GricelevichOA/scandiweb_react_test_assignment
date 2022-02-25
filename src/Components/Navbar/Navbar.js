@@ -59,7 +59,9 @@ export default class Navbar extends Component {
             </Query>
 
             <div className="nav__action">
-              <img src={cartLogo} alt="Cart" />
+              <Link to={"/cart"}>
+                <img src={cartLogo} alt="Cart" />
+              </Link>
             </div>
           </div>
         </div>

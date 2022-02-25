@@ -24,7 +24,14 @@ export default class ProductPage extends Component {
               {price.currency.symbol} {price.amount}
             </p>
           </div>
-          <button className="product-page__add">Add to cart</button>
+          <button
+            className="product-page__add"
+            onClick={() => {
+              this.props.addToCart(product);
+            }}
+          >
+            Add to cart
+          </button>
           <div
             className="product-page__desription"
             dangerouslySetInnerHTML={{ __html: product.description }}
