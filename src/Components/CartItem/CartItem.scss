@@ -1,0 +1,98 @@
+@import "../../index.scss";
+
+.cart-item {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px #e5e5e5 solid;
+  padding: 20px 0;
+
+  &__info {
+    flex: 1 0 70%;
+  }
+
+  &__brand {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  &__options button {
+    border: 1px $color_text solid;
+    color: $color_text;
+    background-color: $color_white;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+
+    width: 63px;
+    height: 45px;
+
+    margin-right: 15px;
+  }
+
+  &__count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    // flex-basis: 10%;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+  }
+
+  &__counter {
+    text-align: center;
+    width: 100%;
+  }
+
+  &__count button {
+    width: 45px;
+    height: 45px;
+
+    color: $color_text;
+    background-color: $color_white;
+    border: 1px $color_text solid;
+
+    padding: 0;
+
+    font-size: 200%;
+  }
+
+  &__gallery {
+    margin-left: 10px;
+    padding: auto;
+    flex-basis: 20%;
+    height: 100%;
+    align-items: center;
+  }
+
+  &__gallery img {
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.option-active {
+  background-color: $color_text;
+  color: $color_white;
+}

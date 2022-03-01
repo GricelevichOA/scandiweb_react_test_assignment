@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import CartItem from "../../Components/CartItem/CartItem";
+import "./Cart.scss";
 
 export default class Cart extends Component {
   render() {
     const { cart } = this.props;
     return (
       <div className="cart">
-        <h1>Cart</h1>
+        <div className="cart__header">CART</div>
         <div className="cart__list">
-          {cart.map((item) => {
-            return (
-              <CartItem
-                key={item.key}
-                item={item}
-                onAddToCart={this.props.onAddToCart}
-                onRemoveFromCart={this.props.onRemoveFromCart}
-              />
-            );
-          })}
+          {cart.length === 0 ? (
+            <h2>Your Cart is empty</h2>
+          ) : (
+            cart.map((item) => {
+              return (
+                <CartItem
+                  key={item.key}
+                  item={item}
+                  currCurrency={this.props.currCurrency}
+                  onAddToCart={this.props.onAddToCart}
+                  onRemoveFromCart={this.props.onRemoveFromCart}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     );

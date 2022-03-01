@@ -59,10 +59,14 @@ export default class Navbar extends Component {
             </Query>
 
             <div className="nav__action">
-              <Link to={"/cart"}>
+              <div
+                onClick={() => {
+                  this.props.toggleMiniCart();
+                }}
+              >
                 <img src={cartLogo} alt="Cart" />
                 {this.props.totalItemsInCart}
-              </Link>
+              </div>
             </div>
           </div>
         </div>

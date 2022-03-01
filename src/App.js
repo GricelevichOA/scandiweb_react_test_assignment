@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.scss";
+import MiniCart from "./Components/MiniCart/MiniCart";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Pages/Cart/Cart";
 import ProductDescription from "./Pages/ProductDescription/ProductDescription";
@@ -13,10 +14,12 @@ class App extends Component {
     this.currencyChangeHandler = this.currencyChangeHandler.bind(this);
     this.onAddToCart = this.onAddToCart.bind(this);
     this.onRemoveFromCart = this.onRemoveFromCart.bind(this);
+    this.toggleMiniCart = this.toggleMiniCart.bind(this);
 
     this.state = {
       currentCurrency: "USD",
       currentCart: [],
+      miniCartDisplay: true,
     };
   }
 
@@ -66,6 +69,12 @@ class App extends Component {
     }
   }
 
+  toggleMiniCart() {
+    this.setState({
+      miniCartDisplay: !this.state.miniCartDisplay,
+    });
+  }
+
   render() {
     const totalItemsInCart = this.state.currentCart.reduce(
       (a, item) => a + item.qty,
@@ -78,7 +87,18 @@ class App extends Component {
           changeCurrency={this.currencyChangeHandler}
           currCurrency={this.state.currentCurrency}
           totalItemsInCart={totalItemsInCart}
+          toggleMiniCart={this.toggleMiniCart}
         />
+        {this.state.miniCartDisplay ? (
+          <MiniCart
+            totalItemsInCart={totalItemsInCart}
+            toggleMiniCart={this.toggleMiniCart}
+            cart={this.state.currentCart}
+            currCurrency={this.state.currentCurrency}
+            onAddToCart={this.onAddToCart}
+            onRemoveFromCart={this.onRemoveFromCart}
+          />
+        ) : null}
         <Routes>
           <Route path="/" element={<Navigate to="/all" />} />
           <Route
@@ -99,6 +119,7 @@ class App extends Component {
             element={
               <Cart
                 cart={this.state.currentCart}
+                currCurrency={this.state.currentCurrency}
                 onAddToCart={this.onAddToCart}
                 onRemoveFromCart={this.onRemoveFromCart}
               />
