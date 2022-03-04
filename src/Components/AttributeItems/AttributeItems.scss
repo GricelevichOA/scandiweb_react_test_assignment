@@ -1,0 +1,22 @@
+@import "../../index.scss";
+
+.btngroup__button {
+  border: 1px $color_text solid;
+  background-color: $color_white;
+
+  padding: 10px;
+  margin-right: 10px;
+
+  min-width: 63px;
+  min-height: 45px;
+}
+
+.btn-active {
+  background-color: $color_text;
+  color: $color_white;
+}
+
+.btn__swatch {
+  width: 100%;
+  height: 100%;
+}

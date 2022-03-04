@@ -5,17 +5,17 @@
   justify-content: center;
   gap: 20px;
 
+  max-width: 70%;
+  margin: 0 auto;
+
   padding: 20px;
 
   &__gallery {
-  }
-
-  &__gallery img {
-    object-fit: cover;
-    width: 400px;
+    flex-basis: 60%;
   }
 
   &__info {
+    flex-basis: 40%;
   }
 
   &__brand {
@@ -28,6 +28,7 @@
     font-weight: 400;
     font-size: 30px;
     color: $color_text;
+    margin-bottom: 40px;
   }
 
   &__add {

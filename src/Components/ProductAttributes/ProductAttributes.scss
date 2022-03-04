@@ -1,0 +1,18 @@
+@import "../../index.scss";
+
+.attributes {
+  width: 100%;
+
+  &__type {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+  }
+}

@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       currentCurrency: "USD",
       currentCart: [],
-      miniCartDisplay: true,
+      miniCartDisplay: false,
     };
   }
 
@@ -39,17 +39,8 @@ class App extends Component {
         ),
       });
     } else {
-      const cartItem = {
-        id: item.id,
-        brand: item.brand,
-        name: item.name,
-        image: item.gallery[0],
-        prices: [...item.prices],
-        key: Date.now(),
-      };
-
       this.setState({
-        currentCart: [...this.state.currentCart, { ...cartItem, qty: 1 }],
+        currentCart: [...this.state.currentCart, { ...item, qty: 1 }],
       });
     }
   }
