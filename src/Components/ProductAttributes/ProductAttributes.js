@@ -3,14 +3,6 @@ import AttributeItems from "../AttributeItems/AttributeItems";
 import "./ProductAttributes.scss";
 
 export default class ProductAttributes extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedAttributes: [],
-    };
-  }
-
   render() {
     const { attributes } = this.props;
 

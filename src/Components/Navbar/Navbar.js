@@ -5,6 +5,7 @@ import cartLogo from "../../Images/empty_cart.svg";
 import { Query } from "@apollo/client/react/components";
 import { GET_CATEGORIES, GET_CURRENCIES } from "../../graphql/queries";
 import { Link } from "react-router-dom";
+import DropDown from "../DropDown/DropDown";
 
 export default class Navbar extends Component {
   render() {
@@ -40,20 +41,13 @@ export default class Navbar extends Component {
                 if (loading) return <h3>Loading...</h3>;
 
                 return (
-                  <select
-                    className="nav__action"
-                    onChange={(e) => {
-                      this.props.changeCurrency(e.target.value);
-                    }}
-                  >
-                    {data.currencies.map((cur) => {
-                      return (
-                        <option key={cur.label} value={cur.label}>
-                          {cur.symbol} {cur.label}
-                        </option>
-                      );
-                    })}
-                  </select>
+                  <div className="nav__action">
+                    <DropDown
+                      currencies={data}
+                      changeCurrency={this.props.changeCurrency}
+                      currCurrency={this.props.currCurrency}
+                    />
+                  </div>
                 );
               }}
             </Query>
