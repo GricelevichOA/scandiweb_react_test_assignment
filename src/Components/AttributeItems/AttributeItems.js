@@ -21,6 +21,19 @@ export default class AttributeItems extends Component {
     this.props.setAttribute(attribute);
   }
 
+  componentDidMount() {
+    const attribute = {
+      id: this.props.attr.id,
+      name: this.props.attr.name,
+      type: this.props.attr.type,
+      item: this.props.attr.items[0],
+    };
+    // idk but it correctly works onli with timeout
+    setTimeout(() => {
+      this.props.setAttribute(attribute);
+    }, 10);
+  }
+
   render() {
     const { items, type, id, name } = this.props.attr;
 

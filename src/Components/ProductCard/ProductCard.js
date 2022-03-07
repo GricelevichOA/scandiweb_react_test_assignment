@@ -14,19 +14,22 @@ export default class ProductCard extends Component {
         className={`product ${this.props.product.inStock ? null : "img-stock"}`}
       >
         <div className="product__header">
-          <div className="product__image">
-            <img
-              src={this.props.product.gallery[0]}
-              alt={this.props.product.id}
-            ></img>
-          </div>
-          {this.props.product.inStock ? null : (
-            <div className="stock">
-              <div className="stock-text">Out of stock</div>
+          <Link to={`/product/${this.props.product.id}`}>
+            <div className="product__image">
+              <img
+                src={this.props.product.gallery[0]}
+                alt={this.props.product.id}
+              ></img>
             </div>
-          )}
+            {this.props.product.inStock ? null : (
+              <div className="stock">
+                <div className="stock-text">Out of stock</div>
+              </div>
+            )}
+          </Link>
 
-          {this.props.product.inStock ? (
+          {this.props.product.inStock &&
+          this.props.product.attributes.length === 0 ? (
             <button className="product__add">
               <img src={cartLogo} alt="Add to cart"></img>
             </button>

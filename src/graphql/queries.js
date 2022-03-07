@@ -34,6 +34,14 @@ export const GET_PRODUCTS = gql`
         inStock
         gallery
         brand
+        attributes {
+          type
+          name
+          id
+          items {
+            id
+          }
+        }
       }
     }
   }

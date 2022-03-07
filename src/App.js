@@ -51,7 +51,7 @@ class App extends Component {
 
   onRemoveFromCart(item) {
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
-    if (itemInCart.qty === 1) {
+    if (itemInCart) {
       this.setState({
         currentCart: this.state.currentCart.filter((i) => i.id !== item.id),
       });
@@ -116,7 +116,13 @@ class App extends Component {
           <Route path="/" element={<Navigate to="/all" />} />
           <Route
             path="/:category"
-            element={<ProductList currCurrency={this.state.currentCurrency} />}
+            element={
+              <ProductList
+                currCurrency={this.state.currentCurrency}
+                onAddToCart={this.onAddToCart}
+                onRemoveFromCart={this.onRemoveFromCart}
+              />
+            }
           />
           <Route
             path="/product/:id"
@@ -124,6 +130,8 @@ class App extends Component {
               <ProductDescription
                 currCurrency={this.state.currentCurrency}
                 onAddToCart={this.onAddToCart}
+                onRemoveFromCart={this.onRemoveFromCart}
+                cart={this.state.currentCart}
               />
             }
           />

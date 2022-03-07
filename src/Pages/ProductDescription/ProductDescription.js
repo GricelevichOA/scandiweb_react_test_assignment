@@ -25,6 +25,8 @@ class ProductDescription extends Component {
                 product={data.product}
                 currCurrency={this.props.currCurrency}
                 onAddToCart={this.props.onAddToCart}
+                onRemoveFromCart={this.props.onRemoveFromCart}
+                cart={this.props.cart}
               />
             );
           }}

@@ -70,6 +70,38 @@
     }
   }
 
+  &__remove {
+    background-color: #aa5e5e;
+    color: $color_white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    padding: 20px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+
+    &:hover {
+      background-color: #a74c4c;
+    }
+
+    &:active {
+      background-color: #793838;
+    }
+  }
+
+  &__gray {
+    background-color: $color_gray;
+    color: $color_white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    padding: 20px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
   &__desription {
     font-family: $font_alt;
     font-size: 16px;

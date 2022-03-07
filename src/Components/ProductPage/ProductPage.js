@@ -32,7 +32,7 @@ export default class ProductPage extends Component {
         itemToCart: {
           ...prevState.itemToCart,
           selectedAttributes: this.state.itemToCart.selectedAttributes.map(
-            (attr, i) =>
+            (attr) =>
               attr.id === selectedAttr.id ? { ...attr, item: value.item } : attr
           ),
         },
@@ -57,6 +57,28 @@ export default class ProductPage extends Component {
       (pr) => pr.currency.label === this.props.currCurrency
     );
 
+    const itemInCart = this.props.cart.find((i) => i.id === product.id);
+
+    const button = itemInCart ? (
+      <button
+        className="product-page__remove"
+        onClick={() => {
+          this.props.onRemoveFromCart(this.state.itemToCart);
+        }}
+      >
+        Remove From Cart
+      </button>
+    ) : (
+      <button
+        className="product-page__add"
+        onClick={() => {
+          this.props.onAddToCart(this.state.itemToCart);
+        }}
+      >
+        Add to cart
+      </button>
+    );
+
     return (
       <div className="product-page">
         <div className="product-page__gallery">
@@ -73,7 +95,6 @@ export default class ProductPage extends Component {
               />
             ) : null}
           </div>
-
           <div className="product-page__price">
             <div className="product-page__price-header">Price: </div>
             <p>
@@ -81,14 +102,11 @@ export default class ProductPage extends Component {
               {price.amount}
             </p>
           </div>
-          <button
-            className="product-page__add"
-            onClick={() => {
-              this.props.onAddToCart(this.state.itemToCart);
-            }}
-          >
-            Add to cart
-          </button>
+          {product.inStock ? (
+            button
+          ) : (
+            <button className="product-page__gray">Out of stock</button>
+          )}
           <div
             className="product-page__desription"
             dangerouslySetInnerHTML={{ __html: product.description }}
