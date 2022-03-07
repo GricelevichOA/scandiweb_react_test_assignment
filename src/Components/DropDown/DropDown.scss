@@ -27,6 +27,7 @@
 
     padding: 20px 0;
 
+    background-color: $color_white;
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
 
@@ -44,7 +45,7 @@
     padding: 0 20px;
 
     &:hover {
-      background-color: #ddddddb4;
+      background-color: #ecebeb;
     }
   }
 }

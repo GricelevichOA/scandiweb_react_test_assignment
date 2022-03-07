@@ -18,17 +18,35 @@ export default class MiniCartItem extends Component {
             {price.currency.symbol} {price.amount}
           </div>
           <div className="minicart-item__attributes">
-            <button className="minicart-item__attribute">S</button>
-            <button className="minicart-item__attribute attr-inactive">
-              M
-            </button>
+            {item.selectedAttributes.map((a) => {
+              return (
+                <div key={a.id}>
+                  <div>{a.name}</div>
+                  {a.type === "swatch" ? (
+                    <button
+                      className="minicart-item__attribute"
+                      style={{
+                        backgroundColor: a.item.value,
+                        color: a.item.value,
+                      }}
+                    >
+                      {a.item.displayValue}
+                    </button>
+                  ) : (
+                    <button className="minicart-item__attribute">
+                      {a.item.value}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="minicart-item__actions">
           <button
             className="minicart-item__action"
             onClick={() => {
-              this.props.onAddToCart(item);
+              this.props.qtyIncrease(item);
             }}
           >
             +
@@ -37,7 +55,7 @@ export default class MiniCartItem extends Component {
           <button
             className="minicart-item__action"
             onClick={() => {
-              this.props.onRemoveFromCart(item);
+              this.props.qtyDecrease(item);
             }}
           >
             -

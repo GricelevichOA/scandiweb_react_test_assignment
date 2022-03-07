@@ -18,8 +18,8 @@ export default class Cart extends Component {
                   key={item.key}
                   item={item}
                   currCurrency={this.props.currCurrency}
-                  onAddToCart={this.props.onAddToCart}
-                  onRemoveFromCart={this.props.onRemoveFromCart}
+                  qtyIncrease={this.props.qtyIncrease}
+                  qtyDecrease={this.props.qtyDecrease}
                 />
               );
             })

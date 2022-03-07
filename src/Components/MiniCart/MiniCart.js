@@ -22,8 +22,8 @@ export default class MiniCart extends Component {
                   currCurrency={this.props.currCurrency}
                   item={item}
                   key={item.key}
-                  onAddToCart={this.props.onAddToCart}
-                  onRemoveFromCart={this.props.onRemoveFromCart}
+                  qtyIncrease={this.props.qtyIncrease}
+                  qtyDecrease={this.props.qtyDecrease}
                 />
               );
             })}

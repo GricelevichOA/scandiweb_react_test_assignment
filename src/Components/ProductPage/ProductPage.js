@@ -75,9 +75,10 @@ export default class ProductPage extends Component {
           </div>
 
           <div className="product-page__price">
-            <h3>Price: </h3>
+            <div className="product-page__price-header">Price: </div>
             <p>
-              {price.currency.symbol} {price.amount}
+              {price.currency.symbol}
+              {price.amount}
             </p>
           </div>
           <button

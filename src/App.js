@@ -15,6 +15,8 @@ class App extends Component {
     this.onAddToCart = this.onAddToCart.bind(this);
     this.onRemoveFromCart = this.onRemoveFromCart.bind(this);
     this.toggleMiniCart = this.toggleMiniCart.bind(this);
+    this.qtyIncrease = this.qtyIncrease.bind(this);
+    this.qtyDecrease = this.qtyDecrease.bind(this);
 
     this.state = {
       currentCurrency: "USD",
@@ -35,7 +37,9 @@ class App extends Component {
     if (itemInCart) {
       this.setState({
         currentCart: this.state.currentCart.map((i) =>
-          i.id === item.id ? { ...itemInCart, qty: itemInCart.qty + 1 } : i
+          i.id === item.id
+            ? { ...itemInCart, selectedAttributes: item.selectedAttributes }
+            : i
         ),
       });
     } else {
@@ -51,6 +55,24 @@ class App extends Component {
       this.setState({
         currentCart: this.state.currentCart.filter((i) => i.id !== item.id),
       });
+    }
+  }
+
+  qtyIncrease(item) {
+    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    if (itemInCart) {
+      this.setState({
+        currentCart: this.state.currentCart.map((i) =>
+          i.id === item.id ? { ...itemInCart, qty: itemInCart.qty + 1 } : i
+        ),
+      });
+    }
+  }
+
+  qtyDecrease(item) {
+    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    if (itemInCart.qty === 1) {
+      this.onRemoveFromCart(item);
     } else {
       this.setState({
         currentCart: this.state.currentCart.map((i) =>
@@ -86,8 +108,8 @@ class App extends Component {
             toggleMiniCart={this.toggleMiniCart}
             cart={this.state.currentCart}
             currCurrency={this.state.currentCurrency}
-            onAddToCart={this.onAddToCart}
-            onRemoveFromCart={this.onRemoveFromCart}
+            qtyIncrease={this.qtyIncrease}
+            qtyDecrease={this.qtyDecrease}
           />
         ) : null}
         <Routes>
@@ -111,8 +133,8 @@ class App extends Component {
               <Cart
                 cart={this.state.currentCart}
                 currCurrency={this.state.currentCurrency}
-                onAddToCart={this.onAddToCart}
-                onRemoveFromCart={this.onRemoveFromCart}
+                qtyIncrease={this.qtyIncrease}
+                qtyDecrease={this.qtyDecrease}
               />
             }
           />

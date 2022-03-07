@@ -18,15 +18,32 @@ export default class CartItem extends Component {
             {price.currency.symbol} {price.amount}
           </div>
           <div className="cart-item__options">
-            <button className="option-active">S</button>
-            <button>M</button>
+            {item.selectedAttributes.map((a) => {
+              return (
+                <div key={a.id}>
+                  <div>{a.name}</div>
+                  {a.type === "swatch" ? (
+                    <button
+                      style={{
+                        backgroundColor: a.item.value,
+                        color: a.item.value,
+                      }}
+                    >
+                      {a.item.displayValue}
+                    </button>
+                  ) : (
+                    <button>{a.item.value}</button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
         <div className="cart-item__count">
           <button
             onClick={() => {
-              this.props.onAddToCart(item);
+              this.props.qtyIncrease(item);
             }}
           >
             +
@@ -34,7 +51,7 @@ export default class CartItem extends Component {
           <div className="cart-item__counter">{item.qty}</div>
           <button
             onClick={() => {
-              this.props.onRemoveFromCart(item);
+              this.props.qtyDecrease(item);
             }}
           >
             -

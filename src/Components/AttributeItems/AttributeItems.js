@@ -6,7 +6,7 @@ export default class AttributeItems extends Component {
     super(props);
 
     this.state = {
-      selectedIndex: "",
+      selectedIndex: 0,
     };
   }
 
