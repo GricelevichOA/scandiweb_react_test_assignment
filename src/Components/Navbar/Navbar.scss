@@ -37,8 +37,8 @@
     text-transform: capitalize;
 
     &:hover {
-      font-weight: 600;
       color: $color_green;
+      text-shadow: 0 0 1px $color_green;
 
       &::after {
         content: "";
