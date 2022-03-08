@@ -20,11 +20,23 @@ class App extends Component {
     this.qtyDecrease = this.qtyDecrease.bind(this);
 
     this.state = {
-      currentCurrency: "USD",
+      currentCurrency: window.localStorage.getItem("currency")
+        ? JSON.parse(window.localStorage.getItem("currency"))
+        : "USD",
       currentCategory: "all",
-      currentCart: [],
+      currentCart: window.localStorage.getItem("cart")
+        ? [...JSON.parse(window.localStorage.getItem("cart"))]
+        : [],
       miniCartDisplay: false,
     };
+  }
+
+  componentDidUpdate() {
+    window.localStorage.setItem(
+      "currency",
+      JSON.stringify(this.state.currentCurrency)
+    );
+    window.localStorage.setItem("cart", JSON.stringify(this.state.currentCart));
   }
 
   // changing current currency

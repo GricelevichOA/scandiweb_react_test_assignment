@@ -18,7 +18,8 @@ class ProductList extends Component {
           }}
         >
           {({ loading, error, data }) => {
-            if (loading) return <h2>Loading...</h2>;
+            if (loading)
+              return <h2 className="product-list__loading">Loading...</h2>;
             if (error) console.log(error);
 
             return (
