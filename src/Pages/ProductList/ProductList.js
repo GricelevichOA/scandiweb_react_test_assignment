@@ -30,6 +30,9 @@ class ProductList extends Component {
                       key={product.id}
                       product={product}
                       currCurrency={this.props.currCurrency}
+                      addToCart={this.props.onAddToCart}
+                      removeFromCart={this.props.onRemoveFromCart}
+                      cart={this.props.cart}
                     />
                   ))}
                 </div>

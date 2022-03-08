@@ -69,4 +69,26 @@
   &__action {
     padding: 10px;
   }
+
+  &__cart {
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+
+    top: -50%;
+    right: -50%;
+
+    background-color: $color_text;
+    color: $color_white;
+    text-align: center;
+    border-radius: 50%;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

@@ -54,12 +54,17 @@ export default class Navbar extends Component {
 
             <div className="nav__action">
               <div
+                className="nav__cart"
                 onClick={() => {
                   this.props.toggleMiniCart();
                 }}
               >
                 <img src={cartLogo} alt="Cart" />
-                {this.props.totalItemsInCart}
+                {this.props.totalItemsInCart > 0 ? (
+                  <div className="nav__counter">
+                    {this.props.totalItemsInCart}
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

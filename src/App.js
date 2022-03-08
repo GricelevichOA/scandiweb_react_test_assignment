@@ -25,12 +25,15 @@ class App extends Component {
     };
   }
 
+  // changing current currency
   currencyChangeHandler(currency) {
     this.setState({
       currentCurrency: currency,
     });
   }
 
+  // cart management
+  // add item to cart
   onAddToCart(item) {
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
 
@@ -49,6 +52,7 @@ class App extends Component {
     }
   }
 
+  // remove item from cart
   onRemoveFromCart(item) {
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
     if (itemInCart) {
@@ -58,6 +62,7 @@ class App extends Component {
     }
   }
 
+  // increase quantity
   qtyIncrease(item) {
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
     if (itemInCart) {
@@ -69,6 +74,7 @@ class App extends Component {
     }
   }
 
+  // decrease quantity
   qtyDecrease(item) {
     const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
     if (itemInCart.qty === 1) {
@@ -82,6 +88,8 @@ class App extends Component {
     }
   }
 
+  // minicart
+  // show|hide minicart
   toggleMiniCart() {
     this.setState({
       miniCartDisplay: !this.state.miniCartDisplay,
@@ -121,6 +129,7 @@ class App extends Component {
                 currCurrency={this.state.currentCurrency}
                 onAddToCart={this.onAddToCart}
                 onRemoveFromCart={this.onRemoveFromCart}
+                cart={this.state.currentCart}
               />
             }
           />

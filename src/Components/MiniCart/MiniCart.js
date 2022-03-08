@@ -6,6 +6,28 @@ import "./MiniCart.scss";
 export default class MiniCart extends Component {
   render() {
     const { cart } = this.props;
+
+    let totalPrice = 0;
+    let currencySymbol = "";
+
+    if (cart.length > 0) {
+      totalPrice = this.props.cart
+        .reduce((a, item) => {
+          return (
+            a +
+            item.qty *
+              item.prices.find(
+                (pr) => pr.currency.label === this.props.currCurrency
+              ).amount
+          );
+        }, 0)
+        .toFixed(2);
+
+      currencySymbol = this.props.cart[0].prices.find(
+        (pr) => pr.currency.label === this.props.currCurrency
+      ).currency.symbol;
+    }
+
     return (
       <div className="minicart">
         <div className="minicart__container">
@@ -29,7 +51,10 @@ export default class MiniCart extends Component {
             })}
             <div className="minicart__total">
               <div className="minicart__total-text">Total:</div>
-              <div className="minicart__total-price">$100</div>
+              <div className="minicart__total-price">
+                {currencySymbol}
+                {totalPrice}
+              </div>
             </div>
 
             <div className="minicart__buttons">
