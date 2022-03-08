@@ -28,7 +28,13 @@
     color: $color_text;
     font-weight: 400;
     font-size: 16px;
+    line-height: 120%;
     padding: 20px;
+
+    background-color: $color_white;
+    border: $color_white;
+
+    text-transform: capitalize;
 
     &:hover {
       font-weight: 600;

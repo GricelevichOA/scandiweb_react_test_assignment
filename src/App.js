@@ -12,6 +12,7 @@ class App extends Component {
     super(props);
 
     this.currencyChangeHandler = this.currencyChangeHandler.bind(this);
+    this.categoryChangeHandler = this.categoryChangeHandler.bind(this);
     this.onAddToCart = this.onAddToCart.bind(this);
     this.onRemoveFromCart = this.onRemoveFromCart.bind(this);
     this.toggleMiniCart = this.toggleMiniCart.bind(this);
@@ -20,6 +21,7 @@ class App extends Component {
 
     this.state = {
       currentCurrency: "USD",
+      currentCategory: "all",
       currentCart: [],
       miniCartDisplay: false,
     };
@@ -29,6 +31,13 @@ class App extends Component {
   currencyChangeHandler(currency) {
     this.setState({
       currentCurrency: currency,
+    });
+  }
+
+  // category changer
+  categoryChangeHandler(category) {
+    this.setState({
+      currentCategory: category,
     });
   }
 
@@ -109,6 +118,7 @@ class App extends Component {
           currCurrency={this.state.currentCurrency}
           totalItemsInCart={totalItemsInCart}
           toggleMiniCart={this.toggleMiniCart}
+          changeCategory={this.categoryChangeHandler}
         />
         {this.state.miniCartDisplay ? (
           <MiniCart
@@ -121,12 +131,12 @@ class App extends Component {
           />
         ) : null}
         <Routes>
-          <Route path="/" element={<Navigate to="/all" />} />
           <Route
-            path="/:category"
+            path="/"
             element={
               <ProductList
                 currCurrency={this.state.currentCurrency}
+                currentCategory={this.state.currentCategory}
                 onAddToCart={this.onAddToCart}
                 onRemoveFromCart={this.onRemoveFromCart}
                 cart={this.state.currentCart}

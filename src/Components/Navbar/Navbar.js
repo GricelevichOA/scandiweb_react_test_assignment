@@ -19,13 +19,15 @@ export default class Navbar extends Component {
                 <div className="nav__links">
                   {data.categories.map((cat) => {
                     return (
-                      <Link
-                        to={`/${cat.name}`}
+                      <button
+                        onClick={() => {
+                          this.props.changeCategory(cat.name);
+                        }}
                         className="nav__link"
                         key={cat.name}
                       >
                         {cat.name}
-                      </Link>
+                      </button>
                     );
                   })}
                 </div>

@@ -13,7 +13,7 @@ class ProductList extends Component {
           query={GET_PRODUCTS}
           variables={{
             input: {
-              title: this.props.params.category,
+              title: this.props.currentCategory,
             },
           }}
         >
