@@ -28,7 +28,7 @@ export default class ProductGallery extends Component {
                 <img
                   src={img}
                   alt={index}
-                  onClick={() => this.onIndexChange(index)}
+                  onMouseEnter={() => this.onIndexChange(index)}
                 ></img>
               </div>
             );
@@ -36,7 +36,10 @@ export default class ProductGallery extends Component {
         </div>
 
         <div className="gallery__main">
-          <img src={gallery[this.state.imageIndex]}></img>
+          <img
+            src={gallery[this.state.imageIndex]}
+            alt={this.state.imageIndex}
+          ></img>
         </div>
       </div>
     );
