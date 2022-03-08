@@ -21,7 +21,7 @@ export default class MiniCartItem extends Component {
             {item.selectedAttributes.map((a) => {
               return (
                 <div key={a.id}>
-                  <div>{a.name}</div>
+                  <div className="minicart-item__attributes-name">{a.name}</div>
                   {a.type === "swatch" ? (
                     <button
                       className="minicart-item__attribute"

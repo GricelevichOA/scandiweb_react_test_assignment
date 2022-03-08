@@ -21,7 +21,7 @@ export default class CartItem extends Component {
             {item.selectedAttributes.map((a) => {
               return (
                 <div key={a.id}>
-                  <div>{a.name}</div>
+                  <div className="cart-item__attribute-name">{a.name}</div>
                   {a.type === "swatch" ? (
                     <button
                       style={{
