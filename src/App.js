@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import MiniCart from "./Components/MiniCart/MiniCart";
 import Navbar from "./Components/Navbar/Navbar";

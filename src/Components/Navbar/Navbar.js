@@ -4,8 +4,8 @@ import logo from "../../Images/logo_transparent.svg";
 import cartLogo from "../../Images/empty_cart.svg";
 import { Query } from "@apollo/client/react/components";
 import { GET_CATEGORIES, GET_CURRENCIES } from "../../graphql/queries";
-import { Link } from "react-router-dom";
 import DropDown from "../DropDown/DropDown";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   render() {
@@ -19,7 +19,8 @@ export default class Navbar extends Component {
                 <div className="nav__links">
                   {data.categories.map((cat) => {
                     return (
-                      <button
+                      <Link
+                        to={"/"}
                         onClick={() => {
                           this.props.changeCategory(cat.name);
                         }}
@@ -27,7 +28,7 @@ export default class Navbar extends Component {
                         key={cat.name}
                       >
                         {cat.name}
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>
