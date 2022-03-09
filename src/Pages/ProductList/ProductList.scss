@@ -1,19 +1,23 @@
 @import "../../index.scss";
 
 .product-list {
-  max-width: 70%;
-  margin: 0 auto;
+  max-width: 1240px;
+  margin: 40px auto 0;
 
   &__header {
     font-size: 42px;
     font-weight: 400;
     text-transform: capitalize;
+    margin-bottom: 40px;
   }
 
   &__products {
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 40px;
+    // justify-content: space-between;
   }
 
   &__loading {

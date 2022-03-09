@@ -14,6 +14,11 @@
     font-size: 16px;
     line-height: 160%;
     margin-bottom: 5px;
+
+    & a {
+      text-decoration: inherit;
+      color: inherit;
+    }
   }
 
   &__name {
@@ -21,6 +26,11 @@
     font-size: 16px;
     line-height: 160%;
     margin-bottom: 5px;
+
+    & a {
+      text-decoration: inherit;
+      color: inherit;
+    }
   }
 
   &__price {

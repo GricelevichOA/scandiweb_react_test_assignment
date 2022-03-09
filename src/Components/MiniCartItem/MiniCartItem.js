@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./MiniCartItem.scss";
 
 export default class MiniCartItem extends Component {
@@ -12,8 +13,12 @@ export default class MiniCartItem extends Component {
     return (
       <div className="minicart-item">
         <div className="minicart-item__info">
-          <div className="minicart-item__brand">{item.brand}</div>
-          <div className="minicart-item__name">{item.name}</div>
+          <div className="minicart-item__brand">
+            <Link to={`/product/${item.id}`}>{item.brand}</Link>
+          </div>
+          <div className="minicart-item__name">
+            <Link to={`/product/${item.id}`}>{item.name}</Link>
+          </div>
           <div className="minicart-item__price">
             {price.currency.symbol} {price.amount}
           </div>
