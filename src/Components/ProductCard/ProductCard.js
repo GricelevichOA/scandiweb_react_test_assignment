@@ -13,7 +13,7 @@ export default class ProductCard extends Component {
         id: this.props.product.id,
         brand: this.props.product.brand,
         name: this.props.product.name,
-        image: this.props.product.gallery[0],
+        gallery: [...this.props.product.gallery],
         prices: [...this.props.product.prices],
         selectedAttributes: [],
         key: Date.now(),

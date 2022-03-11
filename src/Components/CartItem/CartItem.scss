@@ -89,16 +89,8 @@
 
   &__gallery {
     margin-left: 10px;
-    padding: auto;
     flex-basis: 20%;
-    height: 100%;
     align-items: center;
-  }
-
-  &__gallery img {
-    height: 100%;
-    display: block;
-    object-fit: cover;
   }
 
   &__attribute-name {

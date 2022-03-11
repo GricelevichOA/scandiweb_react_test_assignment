@@ -1,0 +1,28 @@
+.g {
+  position: relative;
+
+  &__button {
+    position: absolute;
+    height: 100%;
+    width: 25px;
+    margin: 0;
+
+    background-color: #0000002c;
+
+    top: 0;
+
+    border: none;
+
+    & img {
+      display: block;
+    }
+  }
+}
+
+.btn-left {
+  left: 0;
+}
+
+.btn-right {
+  right: 0;
+}

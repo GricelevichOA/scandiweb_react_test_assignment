@@ -67,7 +67,7 @@ export default class MiniCartItem extends Component {
           </button>
         </div>
         <div className="minicart-item__picture">
-          <img src={item.image} alt={item.name} />
+          <img src={item.gallery[0]} alt={item.name} />
         </div>
       </div>
     );

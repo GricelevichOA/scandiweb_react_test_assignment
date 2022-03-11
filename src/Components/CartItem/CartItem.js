@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import CartGallery from "../CartGallery/CartGallery";
 import "./CartItem.scss";
 
 export default class CartItem extends Component {
@@ -63,7 +64,8 @@ export default class CartItem extends Component {
           </button>
         </div>
         <div className="cart-item__gallery">
-          <img src={item.image} alt={item.name} />
+          {/* <img src={item.gallery[0]} alt={item.name} /> */}
+          <CartGallery gallery={item.gallery} />
         </div>
       </div>
     );
