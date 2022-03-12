@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CartItem from "../../Components/CartItem/CartItem";
+import PropTypes from "prop-types";
 import "./Cart.scss";
 
 export default class Cart extends Component {
@@ -29,3 +30,10 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  cart: PropTypes.array,
+  currCurrency: PropTypes.string,
+  qtyIncrease: PropTypes.func,
+  qtyDecrease: PropTypes.func,
+};

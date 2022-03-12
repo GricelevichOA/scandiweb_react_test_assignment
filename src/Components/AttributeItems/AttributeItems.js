@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import "./AttributeItems.scss";
 
-export default class AttributeItems extends Component {
+class AttributeItems extends Component {
   constructor(props) {
     super(props);
 
@@ -72,3 +73,10 @@ export default class AttributeItems extends Component {
     );
   }
 }
+
+AttributeItems.propTypes = {
+  attr: PropTypes.object,
+  setAttribute: PropTypes.func,
+};
+
+export default AttributeItems;

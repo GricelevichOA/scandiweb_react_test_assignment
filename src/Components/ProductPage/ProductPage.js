@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import ProductAttributes from "../ProductAttributes/ProductAttributes";
 import ProductGallery from "../ProductGallery/ProductGallery";
 import "./ProductPage.scss";
@@ -116,3 +117,11 @@ export default class ProductPage extends Component {
     );
   }
 }
+
+ProductPage.propTypes = {
+  product: PropTypes.object,
+  currCurrency: PropTypes.string,
+  cart: PropTypes.array,
+  onAddToCart: PropTypes.func,
+  onRemoveFromCart: PropTypes.func,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CartGallery from "../CartGallery/CartGallery";
 import "./CartItem.scss";
@@ -71,3 +72,10 @@ export default class CartItem extends Component {
     );
   }
 }
+
+CartItem.propTypes = {
+  item: PropTypes.object,
+  qtyIncrease: PropTypes.func,
+  qtyDecrease: PropTypes.func,
+  currCurrency: PropTypes.string,
+};

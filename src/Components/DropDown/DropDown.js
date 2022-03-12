@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./DropDown.scss";
+import PropTypes from "prop-types";
 import arrowUp from "../../Images/arrow_up.svg";
 import arrowDown from "../../Images/arrow_down.svg";
 
@@ -76,3 +77,9 @@ export default class DropDown extends Component {
     );
   }
 }
+
+DropDown.propTypes = {
+  currCurrency: PropTypes.string,
+  changeCurrency: PropTypes.func,
+  currencies: PropTypes.object,
+};

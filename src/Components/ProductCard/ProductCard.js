@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 import cartLogo from "../../Images/button_cart.svg";
 import cross from "../../Images/cross_white.svg";
+import PropTypes from "prop-types";
 
 export default class ProductCard extends Component {
   constructor(props) {
@@ -86,3 +87,11 @@ export default class ProductCard extends Component {
     );
   }
 }
+
+ProductCard.propTypes = {
+  product: PropTypes.object,
+  currCurrency: PropTypes.string,
+  cart: PropTypes.array,
+  addToCart: PropTypes.func,
+  removeFromCart: PropTypes.func,
+};

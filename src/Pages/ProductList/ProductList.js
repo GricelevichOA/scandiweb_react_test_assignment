@@ -4,6 +4,7 @@ import { GET_PRODUCTS } from "../../graphql/queries";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./ProductList.scss";
 import { withParmans } from "../../hocs/hocs";
+import PropTypes from "prop-types";
 
 class ProductList extends Component {
   render() {
@@ -45,5 +46,13 @@ class ProductList extends Component {
     );
   }
 }
+
+ProductList.propTypes = {
+  currentCategory: PropTypes.string,
+  currCurrency: PropTypes.string,
+  onAddToCart: PropTypes.func,
+  onRemoveFromCart: PropTypes.func,
+  cart: PropTypes.array,
+};
 
 export default withParmans(ProductList);

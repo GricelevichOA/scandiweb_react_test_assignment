@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import arrow_left from "../../Images/arrow_left.svg";
 import arrow_right from "../../Images/arrow_right.svg";
 import "./CartGallery.scss";
@@ -68,3 +69,7 @@ export default class CartGallery extends Component {
     );
   }
 }
+
+CartGallery.propTypes = {
+  gallery: PropTypes.array,
+};

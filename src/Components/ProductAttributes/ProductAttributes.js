@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import AttributeItems from "../AttributeItems/AttributeItems";
 import "./ProductAttributes.scss";
 
@@ -23,3 +24,8 @@ export default class ProductAttributes extends Component {
     );
   }
 }
+
+ProductAttributes.propTypes = {
+  attributes: PropTypes.array,
+  setAttribute: PropTypes.func,
+};

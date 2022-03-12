@@ -3,6 +3,7 @@ import { Query } from "@apollo/client/react/components";
 import { GET_PRODUCT } from "../../graphql/queries";
 import ProductPage from "../../Components/ProductPage/ProductPage";
 import { withParmans } from "../../hocs/hocs.js";
+import PropTypes from "prop-types";
 
 class ProductDescription extends Component {
   render() {
@@ -17,8 +18,6 @@ class ProductDescription extends Component {
           {({ loading, error, data }) => {
             if (loading) return <h2>Loading....</h2>;
             if (error) return console.log(error);
-
-            // console.log(data.product);
 
             return (
               <ProductPage
@@ -35,5 +34,13 @@ class ProductDescription extends Component {
     );
   }
 }
+
+ProductDescription.propTypes = {
+  params: PropTypes.object,
+  cart: PropTypes.array,
+  currCurrency: PropTypes.string,
+  onAddToCart: PropTypes.func,
+  onRemoveFromCart: PropTypes.func,
+};
 
 export default withParmans(ProductDescription);

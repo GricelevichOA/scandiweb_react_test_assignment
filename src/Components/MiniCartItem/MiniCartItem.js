@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./MiniCartItem.scss";
 
@@ -73,3 +74,10 @@ export default class MiniCartItem extends Component {
     );
   }
 }
+
+MiniCartItem.propTypes = {
+  currCurrency: PropTypes.string,
+  item: PropTypes.object,
+  qtyIncrease: PropTypes.func,
+  qtyDecrease: PropTypes.func,
+};
