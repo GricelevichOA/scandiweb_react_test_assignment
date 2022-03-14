@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import MiniCart from "./Components/MiniCart/MiniCart";
+// import MiniCart from "./Components/MiniCart/MiniCart";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Pages/Cart/Cart";
 import ProductDescription from "./Pages/ProductDescription/ProductDescription";
@@ -16,6 +16,7 @@ class App extends Component {
     this.onAddToCart = this.onAddToCart.bind(this);
     this.onRemoveFromCart = this.onRemoveFromCart.bind(this);
     this.toggleMiniCart = this.toggleMiniCart.bind(this);
+    this.closeMiniCart = this.closeMiniCart.bind(this);
     this.qtyIncrease = this.qtyIncrease.bind(this);
     this.qtyDecrease = this.qtyDecrease.bind(this);
 
@@ -117,6 +118,13 @@ class App extends Component {
     });
   }
 
+  // just close minicart
+  closeMiniCart() {
+    this.setState({
+      miniCartDisplay: false,
+    });
+  }
+
   render() {
     const totalItemsInCart = this.state.currentCart.reduce(
       (a, item) => a + item.qty,
@@ -130,18 +138,15 @@ class App extends Component {
           currCurrency={this.state.currentCurrency}
           totalItemsInCart={totalItemsInCart}
           toggleMiniCart={this.toggleMiniCart}
+          closeMiniCart={this.closeMiniCart}
           changeCategory={this.categoryChangeHandler}
+          cart={this.state.currentCart}
+          qtyIncrease={this.qtyIncrease}
+          qtyDecrease={this.qtyDecrease}
+          miniCartDisplay={this.state.miniCartDisplay}
         />
-        {this.state.miniCartDisplay ? (
-          <MiniCart
-            totalItemsInCart={totalItemsInCart}
-            toggleMiniCart={this.toggleMiniCart}
-            cart={this.state.currentCart}
-            currCurrency={this.state.currentCurrency}
-            qtyIncrease={this.qtyIncrease}
-            qtyDecrease={this.qtyDecrease}
-          />
-        ) : null}
+
+        {this.state.miniCartDisplay ? <div className="overlay"></div> : null}
         <Routes>
           <Route
             path="/"

@@ -8,6 +8,8 @@ export default class DropDown extends Component {
   constructor(props) {
     super(props);
 
+    this.box = React.createRef();
+
     this.state = {
       currenciesList: [...this.props.currencies.currencies],
       currentCurrency: {},
@@ -23,7 +25,16 @@ export default class DropDown extends Component {
         ),
       },
     });
+    document.addEventListener("click", this.handleOutsideClick);
   }
+
+  handleOutsideClick = (e) => {
+    if (this.box && !this.box.current.contains(e.target)) {
+      this.setState({
+        isOpen: false,
+      });
+    }
+  };
 
   setCurrentCurrency(curr) {
     this.setState({
@@ -41,7 +52,7 @@ export default class DropDown extends Component {
 
   render() {
     return (
-      <div className="dd">
+      <div className="dd" ref={this.box}>
         <button
           className="dd__header"
           onClick={() => {

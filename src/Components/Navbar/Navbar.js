@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Navbar.scss";
 import logo from "../../Images/logo_transparent.svg";
-import cartLogo from "../../Images/empty_cart.svg";
 import { Query } from "@apollo/client/react/components";
 import { GET_CATEGORIES, GET_CURRENCIES } from "../../graphql/queries";
 import DropDown from "../DropDown/DropDown";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import MiniCart from "../MiniCart/MiniCart";
 
 export default class Navbar extends Component {
   render() {
@@ -60,19 +60,16 @@ export default class Navbar extends Component {
             </Query>
 
             <div className="nav__action">
-              <div
-                className="nav__cart"
-                onClick={() => {
-                  this.props.toggleMiniCart();
-                }}
-              >
-                <img src={cartLogo} alt="Cart" />
-                {this.props.totalItemsInCart > 0 ? (
-                  <div className="nav__counter">
-                    {this.props.totalItemsInCart}
-                  </div>
-                ) : null}
-              </div>
+              <MiniCart
+                totalItemsInCart={this.props.totalItemsInCart}
+                toggleMiniCart={this.props.toggleMiniCart}
+                cart={this.props.cart}
+                currCurrency={this.props.currCurrency}
+                qtyIncrease={this.props.qtyIncrease}
+                qtyDecrease={this.props.qtyDecrease}
+                miniCartDisplay={this.props.miniCartDisplay}
+                closeMiniCart={this.props.closeMiniCart}
+              />
             </div>
           </div>
         </div>
@@ -87,4 +84,9 @@ Navbar.propTypes = {
   toggleMiniCart: PropTypes.func,
   changeCurrency: PropTypes.func,
   totalItemsInCart: PropTypes.number,
+  cart: PropTypes.array,
+  qtyIncrease: PropTypes.func,
+  qtyDecrease: PropTypes.func,
+  miniCartDisplay: PropTypes.bool,
+  closeMiniCart: PropTypes.func,
 };

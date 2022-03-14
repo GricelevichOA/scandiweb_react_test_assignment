@@ -1,5 +1,18 @@
+@import "./index.scss";
+
 .App {
-  position: absolute;
+  position: relative;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 10;
+
+  height: calc(100% - 60px);
+  width: 100%;
+  background: rgba(57, 55, 72, 0.22);
 }
