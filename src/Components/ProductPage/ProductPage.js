@@ -18,7 +18,7 @@ export default class ProductPage extends Component {
         gallery: [...this.props.product.gallery],
         prices: [...this.props.product.prices],
         selectedAttributes: [],
-        key: Date.now(),
+        // key: Date.now(),
       },
     };
   }
@@ -58,27 +58,7 @@ export default class ProductPage extends Component {
       (pr) => pr.currency.label === this.props.currCurrency
     );
 
-    const itemInCart = this.props.cart.find((i) => i.id === product.id);
-
-    const button = itemInCart ? (
-      <button
-        className="product-page__remove"
-        onClick={() => {
-          this.props.onRemoveFromCart(this.state.itemToCart);
-        }}
-      >
-        Remove From Cart
-      </button>
-    ) : (
-      <button
-        className="product-page__add"
-        onClick={() => {
-          this.props.onAddToCart(this.state.itemToCart);
-        }}
-      >
-        Add to cart
-      </button>
-    );
+    // const itemInCart = this.props.cart.find((i) => i.id === product.id);
 
     return (
       <div className="product-page">
@@ -104,7 +84,14 @@ export default class ProductPage extends Component {
             </p>
           </div>
           {product.inStock ? (
-            button
+            <button
+              className="product-page__add"
+              onClick={() => {
+                this.props.onAddToCart(this.state.itemToCart);
+              }}
+            >
+              Add to cart
+            </button>
           ) : (
             <button className="product-page__gray">Out of stock</button>
           )}

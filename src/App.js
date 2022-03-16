@@ -57,40 +57,42 @@ class App extends Component {
   // cart management
   // add item to cart
   onAddToCart(item) {
-    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    const itemInCart = this.state.currentCart.find(
+      (i) =>
+        i.id === item.id &&
+        JSON.stringify(i.selectedAttributes) ===
+          JSON.stringify(item.selectedAttributes)
+    );
 
     if (itemInCart) {
-      this.setState({
-        currentCart: this.state.currentCart.map((i) =>
-          i.id === item.id
-            ? { ...itemInCart, selectedAttributes: item.selectedAttributes }
-            : i
-        ),
-      });
+      this.qtyIncrease(itemInCart);
     } else {
       this.setState({
-        currentCart: [...this.state.currentCart, { ...item, qty: 1 }],
+        currentCart: [
+          ...this.state.currentCart,
+          { ...item, qty: 1, key: Date.now() },
+        ],
       });
     }
   }
 
   // remove item from cart
   onRemoveFromCart(item) {
-    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    const itemInCart = this.state.currentCart.find((i) => i.key === item.key);
     if (itemInCart) {
       this.setState({
-        currentCart: this.state.currentCart.filter((i) => i.id !== item.id),
+        currentCart: this.state.currentCart.filter((i) => i.key !== item.key),
       });
     }
   }
 
   // increase quantity
   qtyIncrease(item) {
-    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    const itemInCart = this.state.currentCart.find((i) => i.key === item.key);
     if (itemInCart) {
       this.setState({
         currentCart: this.state.currentCart.map((i) =>
-          i.id === item.id ? { ...itemInCart, qty: itemInCart.qty + 1 } : i
+          i.key === item.key ? { ...itemInCart, qty: itemInCart.qty + 1 } : i
         ),
       });
     }
@@ -98,13 +100,13 @@ class App extends Component {
 
   // decrease quantity
   qtyDecrease(item) {
-    const itemInCart = this.state.currentCart.find((i) => i.id === item.id);
+    const itemInCart = this.state.currentCart.find((i) => i.key === item.key);
     if (itemInCart.qty === 1) {
       this.onRemoveFromCart(item);
     } else {
       this.setState({
         currentCart: this.state.currentCart.map((i) =>
-          i.id === item.id ? { ...itemInCart, qty: itemInCart.qty - 1 } : i
+          i.key === item.key ? { ...itemInCart, qty: itemInCart.qty - 1 } : i
         ),
       });
     }
@@ -183,6 +185,7 @@ class App extends Component {
             }
           />
         </Routes>
+        {/* {JSON.stringify(this.state.currentCart)} */}
       </div>
     );
   }

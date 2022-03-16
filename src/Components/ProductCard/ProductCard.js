@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 import cartLogo from "../../Images/button_cart.svg";
-import cross from "../../Images/cross_white.svg";
 import PropTypes from "prop-types";
 
 export default class ProductCard extends Component {
@@ -27,10 +26,6 @@ export default class ProductCard extends Component {
       (pr) => pr.currency.label === this.props.currCurrency
     );
 
-    const itemInCart = this.props.cart.find(
-      (i) => i.id === this.props.product.id
-    );
-
     return (
       <div
         className={`product ${this.props.product.inStock ? null : "img-stock"}`}
@@ -52,25 +47,14 @@ export default class ProductCard extends Component {
 
           {this.props.product.inStock &&
           this.props.product.attributes.length === 0 ? (
-            itemInCart ? (
-              <button
-                onClick={() => {
-                  this.props.removeFromCart(this.state.itemToCart);
-                }}
-                className="product__remove"
-              >
-                <img src={cross} alt="Remove from cart"></img>
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  this.props.addToCart(this.state.itemToCart);
-                }}
-                className="product__add"
-              >
-                <img src={cartLogo} alt="Add to cart"></img>
-              </button>
-            )
+            <button
+              onClick={() => {
+                this.props.addToCart(this.state.itemToCart);
+              }}
+              className="product__add"
+            >
+              <img src={cartLogo} alt="Add to cart"></img>
+            </button>
           ) : null}
         </div>
 
