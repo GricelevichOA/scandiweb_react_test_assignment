@@ -81,6 +81,61 @@
     font-size: 18px;
     line-height: 160%;
   }
+
+  &__buy {
+    position: absolute;
+    z-index: 9;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    padding: 15px;
+
+    background-color: $color_white;
+    box-shadow: 0px 50px 35px rgba(168, 172, 176, 0.19);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__apply {
+    flex-basis: 75%;
+    margin-right: 10px;
+
+    padding: 5px;
+
+    background-color: $color_green;
+    color: $color_white;
+    border: none;
+
+    &:hover {
+      background-color: #4ca764;
+    }
+
+    &:active {
+      background-color: #69e68a;
+    }
+  }
+
+  &__dismiss {
+    flex-basis: 25%;
+
+    padding: 5px;
+
+    background-color: #ce5e5e;
+    color: $color_white;
+    border: none;
+
+    &:hover {
+      background-color: #a74c4c;
+    }
+
+    &:active {
+      background-color: #e66969;
+    }
+  }
 }
 
 .stock {

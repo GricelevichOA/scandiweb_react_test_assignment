@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ProductAttributes from "../ProductAttributes/ProductAttributes";
 import "./ProductCard.scss";
 import cartLogo from "../../Images/button_cart.svg";
 import PropTypes from "prop-types";
@@ -7,6 +8,8 @@ import PropTypes from "prop-types";
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
+
+    this.setAttribute = this.setAttribute.bind(this);
 
     this.state = {
       itemToCart: {
@@ -18,7 +21,36 @@ export default class ProductCard extends Component {
         selectedAttributes: [],
         key: Date.now(),
       },
+      attrBlockDisplay: false,
     };
+  }
+
+  setAttribute(value) {
+    const selectedAttr = this.state.itemToCart.selectedAttributes.find(
+      (i) => i.id === value.id
+    );
+
+    if (selectedAttr) {
+      this.setState((prevState) => ({
+        itemToCart: {
+          ...prevState.itemToCart,
+          selectedAttributes: this.state.itemToCart.selectedAttributes.map(
+            (attr) =>
+              attr.id === selectedAttr.id ? { ...attr, item: value.item } : attr
+          ),
+        },
+      }));
+    } else {
+      this.setState((prevState) => ({
+        itemToCart: {
+          ...prevState.itemToCart,
+          selectedAttributes: [
+            ...this.state.itemToCart.selectedAttributes,
+            value,
+          ],
+        },
+      }));
+    }
   }
 
   render() {
@@ -45,11 +77,12 @@ export default class ProductCard extends Component {
             )}
           </Link>
 
-          {this.props.product.inStock &&
-          this.props.product.attributes.length === 0 ? (
+          {this.props.product.inStock ? (
             <button
               onClick={() => {
-                this.props.addToCart(this.state.itemToCart);
+                this.props.product.attributes.length !== 0
+                  ? this.setState({ attrBlockDisplay: true })
+                  : this.props.addToCart(this.state.itemToCart);
               }}
               className="product__add"
             >
@@ -67,6 +100,35 @@ export default class ProductCard extends Component {
           {price.currency.symbol}
           {price.amount}
         </div>
+        {this.state.attrBlockDisplay === true ? (
+          <div className="product__buy">
+            {this.props.product.inStock &&
+            this.props.product.attributes.length !== 0 ? (
+              <ProductAttributes
+                setAttribute={this.setAttribute}
+                attributes={this.props.product.attributes}
+              />
+            ) : null}
+            <div className="product__actions">
+              <button
+                className="product__apply"
+                onClick={() => {
+                  this.props.addToCart(this.state.itemToCart);
+                }}
+              >
+                Add to Cart
+              </button>
+              <button
+                className="product__dismiss"
+                onClick={() => {
+                  this.setState({ attrBlockDisplay: false });
+                }}
+              >
+                X
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }
