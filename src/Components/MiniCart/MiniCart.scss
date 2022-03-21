@@ -35,6 +35,13 @@
     line-height: 160%;
   }
 
+  &__items {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
   &__total {
     display: flex;
     justify-content: space-between;

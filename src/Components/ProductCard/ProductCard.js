@@ -104,10 +104,13 @@ export default class ProductCard extends Component {
           <div className="product__buy">
             {this.props.product.inStock &&
             this.props.product.attributes.length !== 0 ? (
-              <ProductAttributes
-                setAttribute={this.setAttribute}
-                attributes={this.props.product.attributes}
-              />
+              <>
+                <h2>Please select options:</h2>
+                <ProductAttributes
+                  setAttribute={this.setAttribute}
+                  attributes={this.props.product.attributes}
+                />
+              </>
             ) : null}
             <div className="product__actions">
               <button
