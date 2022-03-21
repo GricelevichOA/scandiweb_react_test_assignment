@@ -16,8 +16,12 @@ export default class MiniCart extends Component {
     document.addEventListener("click", this.handleOutsideClick);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleOutsideClick);
+  }
+
   handleOutsideClick = (e) => {
-    if (this.box && !this.box.current.contains(e.target)) {
+    if (this.box.current && !this.box.current.contains(e.target)) {
       this.props.closeMiniCart();
     }
   };
@@ -69,17 +73,19 @@ export default class MiniCart extends Component {
                     {this.props.totalItemsInCart} items
                   </span>
                 </div>
-                {cart.map((item) => {
-                  return (
-                    <MiniCartItem
-                      currCurrency={this.props.currCurrency}
-                      item={item}
-                      key={item.key}
-                      qtyIncrease={this.props.qtyIncrease}
-                      qtyDecrease={this.props.qtyDecrease}
-                    />
-                  );
-                })}
+                <div className="minicart__items">
+                  {cart.map((item) => {
+                    return (
+                      <MiniCartItem
+                        currCurrency={this.props.currCurrency}
+                        item={item}
+                        key={item.key}
+                        qtyIncrease={this.props.qtyIncrease}
+                        qtyDecrease={this.props.qtyDecrease}
+                      />
+                    );
+                  })}
+                </div>
                 <div className="minicart__total">
                   <div className="minicart__total-text">Total:</div>
                   <div className="minicart__total-price">

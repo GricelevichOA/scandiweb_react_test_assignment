@@ -85,3 +85,8 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+html,
+body {
+  min-height: 100%;
+}

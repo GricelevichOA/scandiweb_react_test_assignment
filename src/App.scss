@@ -3,7 +3,7 @@
 .App {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .overlay {
@@ -12,7 +12,7 @@
   left: 0;
   z-index: 10;
 
-  height: calc(100% - 60px);
+  min-height: calc(100% - 60px);
   width: 100%;
   background: rgba(57, 55, 72, 0.22);
 }

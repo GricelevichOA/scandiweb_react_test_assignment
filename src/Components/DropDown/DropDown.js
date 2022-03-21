@@ -28,8 +28,12 @@ export default class DropDown extends Component {
     document.addEventListener("click", this.handleOutsideClick);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleOutsideClick);
+  }
+
   handleOutsideClick = (e) => {
-    if (this.box && !this.box.current.contains(e.target)) {
+    if (this.box.current && !this.box.current.contains(e.target)) {
       this.setState({
         isOpen: false,
       });
