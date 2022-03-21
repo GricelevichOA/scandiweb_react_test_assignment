@@ -20,10 +20,6 @@ export default class MiniCart extends Component {
     document.removeEventListener("mousedown", this.handleOutsideClick);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("click", this.handleOutsideClick);
-  }
-
   handleOutsideClick = (e) => {
     if (this.box.current && !this.box.current.contains(e.target)) {
       this.props.closeMiniCart();
