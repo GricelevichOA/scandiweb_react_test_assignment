@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ProductAttributes from "../ProductAttributes/ProductAttributes";
 import ProductGallery from "../ProductGallery/ProductGallery";
 import "./ProductPage.scss";
+import DOMPurify from "dompurify";
 
 export default class ProductPage extends Component {
   constructor(props) {
@@ -96,8 +97,10 @@ export default class ProductPage extends Component {
             <button className="product-page__gray">Out of stock</button>
           )}
           <div
-            className="product-page__desription"
-            dangerouslySetInnerHTML={{ __html: product.description }}
+            className="product-page__description"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(product.description),
+            }}
           ></div>
         </div>
       </div>
